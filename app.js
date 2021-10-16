@@ -37,13 +37,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'client','build')));
 
-customerRouters(app)
-userRouters(app)
-probeRouters(app)
+app.use(express.static(path.join(__dirname, 'client','build')));
 app.use('/', indexRouter);
+
+
+
 app.get('*',(req,res)=>{
     res.sendfile(path.join(__dirname+'/client/build/index.html'))
 })
