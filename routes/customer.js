@@ -1,10 +1,10 @@
+const express = require('express');
+const router = express.Router();
 const {customerGet, customerCreat, customerDelete, customerUpdate} = require("../controllers/customer");
 
-const customerRouters =(app)=>{
-    app.get('/customer',customerGet)
-    app.post('/customer-post',customerCreat)
-    app.post('/customer-delete',customerDelete)
-    app.post('/customer-update',customerUpdate)
 
-}
-module.exports = customerRouters
+router.get('/customer',customerGet)
+router.post('/customer-post',customerCreat)
+router.post('/customer-delete',customerDelete)
+router.post('/customer-update',customerUpdate)
+module.exports = router

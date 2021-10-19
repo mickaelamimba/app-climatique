@@ -1,9 +1,10 @@
 import React from 'react';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
+import {Modal} from "react-bootstrap";
 
 
-const Register = () => {
+const Register = ({show, onHide}) => {
     const RegisterSchema = Yup.object().shape({
         name : Yup.string().required(),
         address : Yup.string(),
@@ -18,13 +19,20 @@ const Register = () => {
 
     })
     return (
-        <section className="col-md-7 col-lg-7 mb-3">
+        <Modal
+            show={show}
+            onHide={onHide}
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>Créer un utilisateur</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
             <Formik initialValues={{name:'',address:'',city:'',phoneNumber:'',userName:'',password:'',passwordConfirmation:''}}
                     validationSchema={RegisterSchema}
                     onSubmit={values => console.log(values) }>
                 {({errors, touched })=>(
                     <Form className='card p-3' >
-                        <h2>Créer un utilisateur</h2>
+
                         <div className='mb-3'>
                             <Field className='form-control' name="userName" placeholder="Identifian"  />
                             <ErrorMessage className='text-danger' name="userName" component="p" />
@@ -62,8 +70,9 @@ const Register = () => {
                 )}
 
             </Formik>
+                    </Modal.Body>
 
-        </section>
+        </Modal>
     );
 };
 

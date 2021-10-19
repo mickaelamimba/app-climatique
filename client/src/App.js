@@ -9,6 +9,7 @@ import Account from "./component /Account/Account";
 import UserManagement from "./pages/UserManagement";
 import useToken from "./hooks/useToken";
 import {AuthContextProvider} from "./Context/Auth";
+import TheCurves from "./component /TheCurves/TheCurves";
 
 function App() {
     const {  setToken } = useToken();
@@ -29,6 +30,7 @@ function App() {
                     </Route>
                     <Route path="/import-sonde-data">
                         <ImportProbeData/>
+                        <TheCurves/>
                     </Route>
                     <Route path="/mon-compte">
                         <Account/>

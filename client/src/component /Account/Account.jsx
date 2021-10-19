@@ -52,15 +52,17 @@ const Account = () => {
                     </article>
 
                 <button className='btn btn-primary' onClick={handleClick}>Modifer</button>
-            {openModal&&
+
             <ModifyAccount
                 name={data[0]?.name}
                 address={data[0]?.address}
                 city={data[0]?.city}
                 phoneNumber={data[0]?.phoneNumber}
                 userName={data[0]?.userName}
+                show={openModal}
+                onHide={handleClick}
             />
-            }
+
 
 
             

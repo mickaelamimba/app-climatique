@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const CustomerSchema = new mongoose.Schema({
    options:[
-       {officineRooms :{type: Number,required: false}},
+       {type:mongoose.Schema.Types.ObjectId, ref:'Room',required: false},
       {registerDate: {type: Date,required: false}}
    ],
    user:{type:mongoose.Schema.Types.ObjectId, ref:'User'},

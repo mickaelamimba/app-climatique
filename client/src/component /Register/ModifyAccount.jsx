@@ -1,19 +1,27 @@
 import React from 'react';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
+import {Modal} from "react-bootstrap"
 
-const ModifyAccount = ({name,address,city,phoneNumber,userName}) => {
+const ModifyAccount = ({name,address,city,phoneNumber,userName,show,onHide}) => {
     const handleSubmit=(values)=>{
         console.log(values)
     }
     return (
-        <div >
+        <Modal
+            show={show}
+            onHide={onHide}
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>Modifier un utilisateur</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
             <Formik initialValues={{name:name,address:address,city:city
                 ,phoneNumber:phoneNumber,userName:userName,password:''
                 ,passwordConfirmation:''}} onSubmit={handleSubmit}>
                 {({isSubmitting})=>(
 
         <Form>
-            <h2>Modifier un utilisateur</h2>
+
             <div className='mb-3'>
                 <Field className='form-control' name="name" value={name}  placeholder="Identifian"  />
                 <ErrorMessage className='text-danger' name="name" component="p" />
@@ -51,7 +59,8 @@ const ModifyAccount = ({name,address,city,phoneNumber,userName}) => {
                 )}
 
             </Formik>
-        </div>
+            </Modal.Body>
+        </Modal>
 
     );
 };
